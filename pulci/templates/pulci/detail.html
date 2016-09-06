@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'pulci/style.css' %}" />
+</head>
+<script>
+</script>
+
+<body class="detail">
+{% if previous %}
+ <div class="arrow" style="float:left"><a href="detail{{ previous }}"> <= </a></div>
+{% endif %}
+{% if next != -1 %}
+<div class="arrow" style="float:right"><a href="detail{{ next }}">=> </a>
+{% endif %}
+</div>
+<br>
+<div class="container">
+<div class="detailbox" id="detailbox">
+    {{ citation.text | linebreaks }}
+</div>
+<div class="lowerbox" id="lowerbox">
+    <small style="color: blue">(<span style="color:red"> {{citation.who }}</span>, {{ citation.date }})
+                    {% if not votable %}
+                        <img src="{% static 'pulci/img/thumbup.gif' %}" width="50px"/>
+                    {% else %}
+                        <img id="img{{ citation.id }}" class="button" src="{% static 'pulci/img/thumbup.gif' %}" width="50px"
+                             onclick="vote( {{ citation.id }} )" onmouseover="change_cursor()" onmouseout="standart_cursor()"/>
+                    {% endif %}
+                    <span id="counter{{ citation.id }}">{{ citation.likes }}</span>
+    </small>
+</div>
+    </div>
+</body>
+</html>

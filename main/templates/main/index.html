@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/style.css' %}" />
+</head>
+<body>
+<div class="main">
+    <img src="{% static 'main/img/header.png' %}"/>
+
+    <div class="menu">
+        <a href="pulci/">Hlášky našich pulečků</a>
+    </div>
+    <div class="footer">
+        (c) Petra Vidnerová
+        <span class="left"><img src="{% static 'main/img/django.jpg' %}" width="100em"/>
+        </span>
+    </div>
+</div>
+</body>
+</html>

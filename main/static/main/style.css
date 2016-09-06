@@ -1,0 +1,25 @@
+body {
+    background: #e0e0e0;
+}
+
+.main {
+    background: lightblue;
+    margin: 5% 10% 10% 10%;
+    text-align: center;
+    border: 1px solid black;
+    #border-radius: 10px;
+    padding-top: 5%;
+}
+
+.left {
+    float: right;
+}
+
+.menu {
+    padding: 5%;
+}
+
+.footer {
+    margin-top: 10%;
+    background: white;
+}
