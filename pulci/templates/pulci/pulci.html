@@ -81,11 +81,29 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 -->
 
+<div class="header">
+    <span class="left"><h1 id="header"> Veselé hlášky našich pulců </h1></span>
+    <span class="right">
+        <form action="" method="get">
+            <select  name="sort_type" id="select_sort" onchange="this.form.submit()">
+                {% if sort_type = "likes" %}
+                <option value="likes" selected="selected">
+                {% else %}
+                <option value="likes">
+                {% endif %}
+                Řadit od nejlepších</option>
+                {% if sort_type = "date" %}
+                <option value="date" selected="selected">
+                {% else %}
+                    <option value="date">
+                {% endif %}
+                    Řadit dle data</option>
+            </select>
+        </form>
+    </span>
+</div>
 <div class="main">
-<h1 id="header"> Veselé hlášky našich pulců </h1>
-
-
-{%  if citation_list %}
+    {%  if citation_list %}
 
         {% for cit, votable, previous, next in citation_list %}
     <!--- modal window -->

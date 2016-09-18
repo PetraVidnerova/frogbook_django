@@ -27,8 +27,12 @@ h1 {
     clear: both;
     text-align: center;
 }
-.left {
+.right {
     float: right;
+}
+
+.left {
+    float: left;
 }
 
 .fb-like {
@@ -48,10 +52,13 @@ h1 {
 }
 
 
-.button {
+.header {
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .main {
+    clear: both;
     padding-left: 10%;
     padding-right: 10%;
 }

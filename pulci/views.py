@@ -7,15 +7,22 @@ locale.setlocale(locale.LC_ALL, "cs_CZ.utf8")
 
 # Create your views here.
 def pulci(request):
-    #print(request.session.get('voted', list()))
-    citations = Citation.objects.order_by('-likes')
+    sort_type = request.GET.get("sort_type", "likes")
+    if sort_type == "likes":
+        citations = Citation.objects.order_by('-likes')
+    elif sort_type == "date":
+        citations = Citation.objects.order_by('-date')
+    else:
+        raise ValueError("unsupported sort")
+
     votable = [ str(x.id) not in request.session.get('voted',[]) for x in citations ]
     id_list = [ c.id for c in citations ]
     previous = [ id_list[-1]] + id_list[:-1]
     next = id_list[1:] + [id_list[0]]
     citation_list = zip(citations, votable, previous, next)
     context = {
-        'citation_list' : citation_list
+        'citation_list' : citation_list,
+        'sort_type' : sort_type
     }
     return render(request, "pulci/pulci.html", context)
 
