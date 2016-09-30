@@ -15,14 +15,32 @@ def pulci(request):
     else:
         raise ValueError("unsupported sort")
 
+    years = sorted(list(set([ c.date.year for c in citations ])))
+
+    who = request.GET.get("who", "X")
+    if who != "X":
+        citations = [   x for x in citations if x.who == who ]
+
+    year = request.GET.get("year", "all")
+    if year != "all":
+        year = int(year)
+        citations = [ x for x in citations if x.date.year == year]
+
     votable = [ str(x.id) not in request.session.get('voted',[]) for x in citations ]
     id_list = [ c.id for c in citations ]
-    previous = [ id_list[-1]] + id_list[:-1]
-    next = id_list[1:] + [id_list[0]]
+    if len(id_list) > 0:
+        previous = [ id_list[-1]] + id_list[:-1]
+        next = id_list[1:] + [id_list[0]]
+    else:
+        previous = []
+        next = []
     citation_list = zip(citations, votable, previous, next)
     context = {
         'citation_list' : citation_list,
-        'sort_type' : sort_type
+        'sort_type' : sort_type,
+        'who' :  who,
+        'year' : year,
+        'years' : years
     }
     return render(request, "pulci/pulci.html", context)
 
