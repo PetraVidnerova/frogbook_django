@@ -1,0 +1,17 @@
+<html>
+<head>
+</head>
+
+<body>
+    <h1> Užitečné odkazy </h1>
+    <ul>
+    {% for b in bookmarks %}
+        <li>
+            <a href="{{ b.url }}">{{ b.title }}</a> <br>
+            <p>{{ b.description }}</p>
+            <small> {{ b.date }}</small>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
