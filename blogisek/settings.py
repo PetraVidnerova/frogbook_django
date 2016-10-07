@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'pulci.apps.PulciConfig',
     'main.apps.MainConfig',
+    'bookmarks.apps.BookmarksConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
