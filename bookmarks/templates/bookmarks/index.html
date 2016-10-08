@@ -7,8 +7,8 @@
     <ul>
     {% for b in bookmarks %}
         <li>
-            <a href="{{ b.url }}">{{ b.title }}</a> <br>
-            <p>{{ b.description }}</p>
+            <a href="{{ b.url }}">{{ b.title }}</a>
+            {{ b.description }}
             <small> {{ b.date }}</small>
         </li>
     {% endfor %}
