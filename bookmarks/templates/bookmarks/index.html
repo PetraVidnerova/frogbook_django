@@ -1,8 +1,33 @@
+{% load staticfiles %}
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}" />
 </head>
 
 <body>
+    <nav class="navbar navbar-default">
+
+        <div class="container-fluid">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#main_navbar"
+                    aria-expanded="false">
+                Menu
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main_navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="../">Home</a></li>
+                <li><a href="../pulci/">Hlášky našich pulečků</a></li>
+                <li class="active"><a href="">Bookmarks</a></li>
+                <li><a href="">Keramická galerie</a></li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
     <h1> Užitečné odkazy </h1>
     <ul>
     {% for b in bookmarks %}
