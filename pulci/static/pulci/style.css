@@ -1,6 +1,7 @@
 body {
  #background: #31cfcf;
  background: lightblue;
+ color: black;
 }
 
 h1 {
@@ -9,14 +10,14 @@ h1 {
 }
 
 .box {
-    float: left;
+    #float: left;
     padding: 1em;
     background: #e0e0e0;
     #background: #31cfcc;
     border: 1pt black solid;
-    margin: 0.5%;
+    margin: 2%;
     #width: 250px;
-    width: 27%;
+    #width: 100%;
     height: 200px;
     overflow: auto;
 }
@@ -52,7 +53,7 @@ h1 {
 }
 
 
-.header {
+header {
     padding-left: 10%;
     padding-right: 10%;
 }
@@ -102,6 +103,7 @@ button {
     border: 1px solid black;
     border-radius: 20px;
     width: 50%;
+    height: 400px;
     position: fixed;
     left: 25%;
     top: 10%;

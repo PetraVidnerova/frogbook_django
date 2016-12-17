@@ -1,8 +1,10 @@
 {% load staticfiles %}
-<html>
+<!DOCTYPE html>
+<html lang="cs">
 <head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'pulci/style.css' %}" />
-</head>
+    </head>
 <script>
     function vote(id) {
         var xmlhttp = new XMLHttpRequest();
@@ -80,8 +82,17 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li><a href="pulci/">Hlášky našich pulečků</a></li>
+            <li><a href="bookmarks">Bookmarks</a></li>
+            <li><a href="">Keramická galerie</a></li>
+        </ul>
+    </div>
+</nav>
 
-<div class="header">
+<header>
     <span class="left"><h1 id="header"> Veselé hlášky našich pulců </h1></span>
     <span class="right">
         <form action="" method="get">
@@ -126,13 +137,15 @@
             </select>
         </form>
     </span>
-</div>
+</header>
 <div class="main">
     {%  if citation_list %}
-
+    <div class="row">
         {% for cit, votable, previous, next in citation_list %}
+
     <!--- modal window -->
-    <div class="modal" id="detail{{ cit.id }}">
+
+            <div class="modal" id="detail{{ cit.id }}">
         <div class="modalheader">
         <span class="leftarrow" onclick="switch_from_to({{ cit.id }}, {{ previous }})"
             onmouseover="change_cursor()" onmouseout="standart_cursor()"> < </span>
@@ -157,10 +170,12 @@
             <span style="float:right"><button onclick="close_modal({{ cit.id }})" onmouseover="change_cursor()" onmouseout="standart_cursor()"> Zavřít </button></span>
     </div>
 
-    <!---- boxes with citations -->
-    <div class="box" id="{{cit.id}}" onmouseover="select('{{cit.id}}')" onmouseleave="unselect('{{cit.id}}')">
 
-        <div class="info">
+    <!---- boxes with citations -->
+        <div class="col-lg-4 col-md-6 col-xs-12">
+        <div class="box" id="{{cit.id}}" onmouseover="select('{{cit.id}}')" onmouseleave="unselect('{{cit.id}}')">
+
+            <div class="info">
                 <small style="color: blue">(<span style="color:red"> {{cit.get_who_display }}</span>,
                     {{ cit.date | date:'d. m. Y' }})
                     {% if not votable %}
@@ -172,12 +187,14 @@
                     <span id="counter2{{ cit.id }}">{{ cit.likes }}</span> </small>
                     <img src="{% static 'pulci/img/lupa.png' %}" width="30px"
                          onclick="show({{ cit.id }})" onmouseover="change_cursor()" onmouseout="standart_cursor()"/>
-                    </div>
+            </div>
                  <hr>
                  {{ cit.text | linebreaks }}
-            </div>
+        </div>
+        </div>
         {% endfor %}
-{% endif %}
+        </div>
+    {% endif %}
 </div>
 <div class="footer">
         (c) Petra Vidnerová
