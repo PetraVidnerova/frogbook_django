@@ -61,16 +61,13 @@ header {
 
 .main {
     clear: both;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-top: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .detail {
     padding: 5% 20%;
-}
-.container {
-    border: 1px solid black;
-    background: #e0e0e0;
 }
 
 .detailbox {

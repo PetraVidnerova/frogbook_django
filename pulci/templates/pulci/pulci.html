@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'main/css/bootstrap.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'pulci/style.css' %}" />
-    </head>
+    <link rel="stylesheet" type="text/css" href="{% static 'pulci/pin.css' %}" />
+</head>
 <script>
     function vote(id) {
         var xmlhttp = new XMLHttpRequest();
@@ -36,17 +37,6 @@
         document.getElementsByTagName("body")[0].style.cursor = 'auto';
     }
 
-    function select(id) {
-        element = document.getElementById(id);
-        element.style.borderColor = 'red';
-        element.style.backgroundColor = 'white';
-    }
-
-    function unselect(id) {
-        element = document.getElementById(id);
-        element.style.borderColor = 'black';
-        element.style.backgroundColor = '#e0e0e0';
-    }
 
     var current_modal = null;
 
@@ -153,10 +143,12 @@
         </form>
     </span>
 </header>
-<div class="main">
+<div class="container main">
     {%  if citation_list %}
     <div class="row">
+        <section id="pinBoot">
         {% for cit, votable, previous, next in citation_list %}
+        <article class="white-panel">
 
     <!--- modal window -->
 
@@ -187,14 +179,12 @@
 
 
     <!---- boxes with citations -->
-        <div class="col-lg-4 col-md-6 col-xs-12">
-        <div class="box" id="{{cit.id}}" onmouseover="select('{{cit.id}}')" onmouseleave="unselect('{{cit.id}}')">
 
             <div class="info">
                 <small style="color: blue">(<span style="color:red"> {{cit.get_who_display }}</span>,
                     {{ cit.date | date:'d. m. Y' }})
                     {% if not votable %}
-                        <img src="{% static 'pulci/img/thumbup.gif' %}" width="50px"/>
+                        <img src="{% static 'pulci/img/thumbup.gif' %}" width="25%"/>
                     {% else %}
                         <img id="img2{{ cit.id }}" class="button" src="{% static 'pulci/img/thumbup.gif' %}" width="50px"
                              onclick="vote( {{ cit.id }}, 2)" onmouseover="change_cursor()" onmouseout="standart_cursor()"/>
@@ -205,9 +195,9 @@
             </div>
                  <hr>
                  {{ cit.text | linebreaks }}
-        </div>
-        </div>
+        </article>
         {% endfor %}
+        </section>
         </div>
     {% endif %}
 </div>
@@ -225,5 +215,6 @@ alt="TOPlist" width="80" height="15" /></noscript></a>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'pulci/js/pin.js' %}"></script>
 </body>
 </html>
